@@ -224,15 +224,12 @@ function Split-Word($word) {
 
   $splits = [string[]]@()
 
-  foreach($i in (0..($word.length / $bubbleWidth))) {
-    $startPoint = ($i * $bubbleWidth)
-    if(($startPoint + $bubbleWidth) -gt $word.length) {
-      $splits += $word.substring($startPoint)
-    } else {
-      $splits += $word.substring($startPoint, $bubbleWidth)
-    }
+  $startPoint = 0
+  while ($startPoint -lt $word.length)
+  {
+    $splits += $word.substring($startPoint, ([math]::min($word.length-$startPoint, $bubbleWidth)) )
+    $startPoint += $bubbleWidth
   }
-
   return ,[string[]]$splits
 }
 
