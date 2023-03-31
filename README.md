@@ -24,6 +24,10 @@ Posh-Cowsay exposes a single function *cowsay*. Any non-option args passed to co
 For more examples see the built-in Powershell help:
 
     > get-help cowsay -examples
+    
+Watch it move
+   
+    >  1..9999|% {"#" * $_} |% { [console]::WriteLine( (($_| cowsay)-join "`n")); [console]::SetCursorPosition(0,0)}
 
 Install
 =======
